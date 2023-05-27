@@ -20,4 +20,9 @@ class UserStudentClass extends Model
     {
         return $this->belongsTo(StudentClass::class, 'student_class_id');
     }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
+    }
 }

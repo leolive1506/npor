@@ -13,6 +13,7 @@ class StudentClass extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo'
+        'photo',
+        'code_class_id'
     ];
 }
