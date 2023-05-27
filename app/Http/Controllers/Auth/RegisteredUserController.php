@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
     {
         $user = User::create([
             'student_number' => $request->student_number,
-            'war_name' => $request->war_name,
+            'war_name' => strtoupper($request->war_name),
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),

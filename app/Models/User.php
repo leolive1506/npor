@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function numberAndName()
     {
-        return "{$this->student_number} - {$this->war_name}";
+        return "{$this->student_number} {$this->war_name}";
     }
 }
