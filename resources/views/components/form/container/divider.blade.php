@@ -38,12 +38,12 @@
             >
                 @csrf
                 <div class="overflow-hidden shadow sm:rounded-md {{ $classContainerInputs }}">
-                    <div class="bg-white px-4 py-5 sm:p-6">
+                    <div class="px-4 py-5 sm:p-6 shadow-sm">
                         <div class="grid grid-cols-6 gap-6">
                             {{ $slot }}
                         </div>
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                    <div class="px-4 py-3 text-right sm:px-6">
                         @if ($actions)
                             {{ $actions }}
                         @else

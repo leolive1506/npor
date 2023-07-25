@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentClass extends Model
+class
+StudentClass extends Model
 {
     use HasFactory;
 
@@ -16,4 +17,9 @@ class StudentClass extends Model
         'photo',
         'code_class_id'
     ];
+
+    public function usersStudentClass()
+    {
+        return $this->hasMany(UserStudentClass::class, 'student_class_id');
+    }
 }

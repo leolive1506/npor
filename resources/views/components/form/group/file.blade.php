@@ -3,7 +3,7 @@
 <div
     {{ $attributes->merge(['class' => 'flex flex-col justify-start sm:justify-center col-span-6 flex-1']) }}>
     <label for="{{ $name }}" class="block text-sm font-medium leading-6 text-gray-900">{{ $label }}</label>
-    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-200/25 px-6 py-10">
         <div class="text-center">
             @if ($preview)
                 <img src="" alt="Foto do pelotão" class="h-32 w-32 rounded-full object-cover hidden"
@@ -17,7 +17,7 @@
             @endif
             <div class="mt-4 flex text-sm leading-6 text-gray-600">
                 <label for="{{ $name }}"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                    class="relative cursor-pointer rounded-md bg-gray-800 houver:opacity-5 transition-colors p-4 font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                     <span>Selecione um arquivo</span>
                     <input type="file" class="sr-only" name="{{ $name }}" id="{{ $name }}"
                         {{ $multiple ? 'multiple' : '' }}>

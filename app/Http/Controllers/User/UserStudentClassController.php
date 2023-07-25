@@ -39,6 +39,7 @@ class UserStudentClassController extends Controller
      */
     public function store(StoreUserStudentClassRequest $request)
     {
+        /* TODO: UPLOAD PHOTO */
         $studentClassData = array_merge($request->only(['name', 'description']), ['code_class_id' => hash('md5', now()->toDateTimeString())]);
         $studentClass = StudentClass::create($studentClassData);
 
@@ -48,7 +49,7 @@ class UserStudentClassController extends Controller
             'position_id' => Position::SHERIFF
         ]);
 
-        return redirect()->route('user-student-class.create')->with('success', 'Pelotão criado com sucesso');
+        return redirect()->route('dashboard.index')->with('success', 'Pelotão criado com sucesso');
     }
 
     /**
