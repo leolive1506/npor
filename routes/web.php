@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Guest\EnterStudentClass;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserStudentClassController;
@@ -38,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::middleware('in-squad')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     });
+
 });
+
+Route::get('/class/{code_class_id}', [EnterStudentClass::class, 'index'])->name('enter-stuent-class.index');
+Route::get('/class/form/{code_class_id}', [EnterStudentClass::class, 'form'])->name('enter-stuent-class.form');;
+Route::post('/class/enter/{code_class_id}', [EnterStudentClass::class, 'enter'])->name('enter-stuent-class.enter');;
 
 require __DIR__.'/auth.php';

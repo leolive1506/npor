@@ -16,7 +16,7 @@ class RegisteredUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_number' => ['required', 'integer', 'between:1,30', 'unique:' . User::class],
+            'student_number' => ['required', 'integer', 'unique:' . User::class],
             'war_name' => ['required', 'string', 'max:140'],
             'phone' => ['required', 'string', 'unique:' . User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],

@@ -26,7 +26,7 @@ class StoreUserStudentClassRequest extends FormRequest
         return [
             'name' => ['required', 'max:140'],
             'description' => ['nullable'],
-            'photo' => ['nullable', 'file']
+            'photo' => ['required', 'file']
         ];
     }
 }

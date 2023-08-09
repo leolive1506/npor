@@ -15,10 +15,10 @@ class PositionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('positions')->insert(
+        DB::table('positions')->insert([
             ['name' => 'Xerife'],
             ['name' => 'Sub-xerife'],
             ['name' => 'Aluno']
-        );
+        ]);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Actions\User\UserStudentClassAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserStudentClassRequest;
 use App\Models\StudentClass;
 use App\Models\UserStudentClass;
 use App\Support\Constants\Position;
 use Illuminate\Http\Request;
+use Image;
 
 class UserStudentClassController extends Controller
 {
@@ -39,15 +41,35 @@ class UserStudentClassController extends Controller
      */
     public function store(StoreUserStudentClassRequest $request)
     {
-        /* TODO: UPLOAD PHOTO */
-        $studentClassData = array_merge($request->only(['name', 'description']), ['code_class_id' => hash('md5', now()->toDateTimeString())]);
+        $photo = $request->file('photo');
+        $code_class_id = hash('md5', now()->toDateTimeString());
+        $filepath = '';
+
+        if ($photo) {
+            $filepath = $photo->store('student-class');
+
+            $publicPath = public_path($filepath);
+            $imageObject = Image::make($publicPath);
+            $with = null;
+            $height = 400;
+            $quality = 80;
+
+            $imageObject->resize($with, $height, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save($publicPath, $quality);
+        }
+
+        $studentClassData = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'code_class_id' => $code_class_id,
+            'photo' => $filepath
+        ];
+
         $studentClass = StudentClass::create($studentClassData);
 
-        $userStudentClass = UserStudentClass::create([
-            'user_id' => auth()->user()->id,
-            'student_class_id' => $studentClass->id,
-            'position_id' => Position::SHERIFF
-        ]);
+        UserStudentClassAction::execute(auth()->user()->id, $studentClass->id, Position::SHERIFF);
 
         return redirect()->route('dashboard.index')->with('success', 'Pelotão criado com sucesso');
     }
