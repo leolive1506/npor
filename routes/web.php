@@ -42,12 +42,6 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::get('/class/{code_class_id}', [EnterStudentClass::class, 'index'])->name('enter-stuent-class.index');
-// Route::get('/class/form/{code_class_id}', [EnterStudentClass::class, 'form'])->name('enter-stuent-class.form');;
-Route::get('/class/enter/register/{code_class_id}', [EnterStudentClass::class, 'formRegister'])->name('enter-stuent-class.formRegister');;
-Route::post('/class/enter/register/{code_class_id}', [EnterStudentClass::class, 'register'])->name('enter-stuent-class.register');;
-
-Route::get('/class/enter/login/{code_class_id}', [EnterStudentClass::class, 'formLogin'])->name('enter-stuent-class.formLogin');;
-Route::post('/class/enter/login/{code_class_id}', [EnterStudentClass::class, 'login'])->name('enter-stuent-class.login');;
+Route::prefix('class')->group(base_path('routes/groups/enter-student-class.php'));
 
 require __DIR__.'/auth.php';
