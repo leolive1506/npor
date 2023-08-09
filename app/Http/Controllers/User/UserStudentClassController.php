@@ -61,8 +61,8 @@ class UserStudentClassController extends Controller
         }
 
         $studentClassData = [
-            'name' => $request->name,
-            'description' => $request->description,
+            'name' => strtoupper($request->name),
+            'description' => ucfirst($request->description),
             'code_class_id' => $code_class_id,
             'photo' => $filepath
         ];

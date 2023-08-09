@@ -1,7 +1,7 @@
 <x-app-layout>
     <main class="lg:pr-96">
         <header class="flex items-center justify-between border-b border-white/5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-            <h1 class="text-base font-semibold leading-7 text-white">{{ $classForCurrentUser->name }}</h1>
+            <h1 class="text-base font-semibold leading-7 text-white">{{ $studentClass->name }}</h1>
             <!-- Sort dropdown -->
             {{-- <div class="relative">
                 <button type="button"
@@ -30,7 +30,7 @@
             </div> --}}
         </header>
 
-        @if ($classForCurrentUser->users_student_class_count > 1)
+        @if ($studentClass->users_student_class_count > 1)
             <!-- Deployment list -->
             <ul role="list" class="divide-y divide-white/5">
                 <li class="relative flex items-center space-x-4 px-4 py-4 sm:px-6 lg:px-8">
@@ -77,24 +77,23 @@
     <aside
         class="bg-black/10 lg:fixed lg:bottom-0 lg:right-0 lg:top-16 lg:w-96 lg:overflow-y-auto lg:border-l lg:border-white/5">
         <header class="flex items-center justify-between border-b border-white/5 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-            <h2 class="text-base font-semibold leading-7 text-white">Activity feed</h2>
+            <h2 class="text-base font-semibold leading-7 text-white">Pelotão</h2>
             <a href="#" class="text-sm font-semibold leading-6 text-indigo-400">View all</a>
         </header>
         <ul role="list" class="divide-y divide-white/5">
-            <li class="px-4 py-4 sm:px-6 lg:px-8">
-                <div class="flex items-center gap-x-3">
-                    <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="" class="h-6 w-6 flex-none rounded-full bg-gray-800">
-                    <h3 class="flex-auto truncate text-sm font-semibold leading-6 text-white">Michael Foster
-                    </h3>
-                    <time datetime="2023-01-23T11:00" class="flex-none text-xs text-gray-600">1h</time>
-                </div>
-                <p class="mt-3 truncate text-sm text-gray-500">Pushed to <span class="text-gray-400">ios-app</span>
-                    (<span class="font-mono text-gray-400">2d89f0c8</span> on <span class="text-gray-400">main</span>)
-                </p>
-            </li>
-
-            <!-- More items... -->
+            @foreach($users as $user)
+                <li class="px-4 py-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center gap-x-3">
+                        <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="" class="h-6 w-6 flex-none rounded-full bg-gray-800">
+                        <h3 class="flex-auto truncate text-sm font-semibold leading-6 text-white">
+                            {{ $user->student_number }} {{ $user->war_name }}
+                        </h3>
+                        <time datetime="{{ $user->created_at }}" class="flex-none text-xs text-gray-600">1h</time>
+                    </div>
+                    </p>
+                </li>
+            @endforeach
         </ul>
     </aside>
 </x-app-layout>
