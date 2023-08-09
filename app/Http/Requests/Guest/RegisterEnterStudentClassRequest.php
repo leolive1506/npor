@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules;
 
-class EnterStudentClassRequest extends FormRequest
+class RegisterEnterStudentClassRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -20,7 +20,7 @@ class EnterStudentClassRequest extends FormRequest
             'war_name' => ['required', 'string', 'max:140'],
             'phone' => ['required', 'string', 'unique:' . User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed' , Rules\Password::defaults()],
         ];
     }
 }

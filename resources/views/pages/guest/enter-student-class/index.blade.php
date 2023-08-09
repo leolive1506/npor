@@ -16,7 +16,7 @@
                         Clique no botão abaixo para participar do seu pelotão
                     </p>
                     <div class="mt-4 flex items-center justify-center gap-x-6">
-                        <a href="{{ route('enter-stuent-class.form', $studentClass->code_class_id) }}"
+                        <a href="{{ route('enter-stuent-class.formRegister', $studentClass->code_class_id) }}"
                             class="flex items-center gap-2 rounded-md bg-green-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                             Participar do pelotão
                         </a>
