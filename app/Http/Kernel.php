@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckIfAlreadyInSquad;
 use App\Http\Middleware\CheckIfNotAlreadyInSquad;
+use App\Http\Middleware\Guest\EnterStudentClass\CheckUserAlreadyLogged;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,5 +70,6 @@ class Kernel extends HttpKernel
         // app
         'in-squad' => CheckIfAlreadyInSquad::class,
         'not-in-squad' => CheckIfNotAlreadyInSquad::class,
+        'guest.enter-student-class.check-user-already-logged' => CheckUserAlreadyLogged::class,
     ];
 }
