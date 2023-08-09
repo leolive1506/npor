@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\UserStudentClassAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Guest\EnterStudentClassRequest;
 use App\Models\StudentClass;
 use App\Support\Constants\Position;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class EnterStudentClass extends Controller
         ]);
     }
 
-    public function enter(Request $request, $codeClassId)
+    public function enter(EnterStudentClassRequest $request, $codeClassId)
     {
         $user = CreateUserAction::execute(
             $request->student_number,
