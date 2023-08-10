@@ -18,6 +18,7 @@
 <body class="h-full">
     <div x-data="{ openMobile: false }">
         <x-notify.handle-notify />
+        <x-compile-tailwind />
         <x-navigation.in-squad.mobile />
         <x-navigation.in-squad.desktop />
 

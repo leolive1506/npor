@@ -81,15 +81,26 @@
             <a href="#" class="text-sm font-semibold leading-6 text-indigo-400">View all</a>
         </header>
         <ul role="list" class="divide-y divide-white/5">
-            @foreach($users as $user)
+            @foreach($usersStudentClass as $userStudentClass)
                 <li class="px-4 py-4 sm:px-6 lg:px-8">
                     <div class="flex items-center gap-x-3">
-                        <img src="{{ $user->photo }}"
+                        <img src="{{ $userStudentClass->user->photo }}"
                             alt="" class="h-6 w-6 flex-none rounded-full bg-gray-800">
                         <h3 class="flex-auto truncate text-sm font-semibold leading-6 text-white">
-                            {{ $user->student_number }} {{ $user->war_name }}
+                            {{ $userStudentClass->user->student_number }} {{ $userStudentClass->user->war_name }}
                         </h3>
-                        <time datetime="{{ $user->created_at }}" class="flex-none text-xs text-gray-600">1h</time>
+                        @switch($userStudentClass->position_id)
+                            @case($userPositions['sheriff'])
+                                <x-status.circle color="text-blue-500" />
+                                @break
+                            @case($userPositions['deputySheriff'])
+                                <x-status.circle color="text-green-500" />
+                                @break
+                            @default
+
+                        @endswitch
+
+                        <time datetime="{{ $userStudentClass->user->created_at }}" class="flex-none text-xs text-gray-600">1h</time>
                     </div>
                     </p>
                 </li>
