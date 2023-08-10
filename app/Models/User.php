@@ -22,6 +22,7 @@ class User extends Authenticatable
         'war_name',
         'email',
         'phone',
+        'photo',
         'password',
     ];
 

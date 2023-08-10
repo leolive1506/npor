@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Support\Constants\PublicImages;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -26,7 +29,29 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $data = $request->validated();
+        $photo = $request->file('photo');
+
+        if ($photo) {
+            $data['photo'] = $photo->store('user/' . auth()->id());
+
+            $publicPath = public_path($data['photo']);
+            $imageObject = Image::make($publicPath);
+            $with = null;
+            $height = 400;
+            $quality = 80;
+
+            $imageObject->resize($with, $height, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save($publicPath, $quality);
+
+            if (auth()->user()->photo != PublicImages::DEFAULT_PROFILE) {
+                Storage::delete(auth()->user()->photo);
+            }
+        }
+
+        $request->user()->fill($data);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
@@ -34,7 +59,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('success', 'Salvo com sucesso');
     }
 
     /**

@@ -84,7 +84,7 @@
             @foreach($users as $user)
                 <li class="px-4 py-4 sm:px-6 lg:px-8">
                     <div class="flex items-center gap-x-3">
-                        <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        <img src="{{ $user->photo }}"
                             alt="" class="h-6 w-6 flex-none rounded-full bg-gray-800">
                         <h3 class="flex-auto truncate text-sm font-semibold leading-6 text-white">
                             {{ $user->student_number }} {{ $user->war_name }}

@@ -52,6 +52,14 @@ return [
             'throw' => false,
         ],
 
+        'user' => [
+            'driver' => 'local',
+            'root' => storage_path('app/user'),
+            'url' => env('APP_URL').'/user',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -80,6 +88,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('student-class') => storage_path('app/student-class'),
+        public_path('user') => storage_path('app/user'),
     ],
 
 ];
