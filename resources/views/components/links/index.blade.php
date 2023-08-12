@@ -1,6 +1,5 @@
-<a
-    {{ $attributes->merge(['class' => 'inline-flex justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all ' . $color]) }}
-    href="{{ $href }}"
->
-    {{ $title }}
+<a href="{{ $href }}"
+    class="px-4 py-3 {{ $color }} rounded-md outline-none shadow-lg transform active:scale-75 transition-transform flex">
+    {{ $icon }}
+    <span class="ml-2">{{ $title }}</span>
 </a>

@@ -51,7 +51,7 @@
                                     <button type="button"
                                         class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800">
                                         <img class="h-8 w-8 rounded-full bg-gray-800"
-                                            src="{{ auth()->user()?->photo ?? \App\Support\Constants\PublicImages::DEFAULT_PROFILE }}"
+                                            src="{{ asset(auth()->user()?->photo ?? \App\Support\Constants\PublicImages::DEFAULT_PROFILE) }}"
                                             alt="">
                                         <span class="sr-only">Your profile</span>
                                         <span aria-hidden="true">{{ Auth::user()->numberAndName() }}</span>
