@@ -1,10 +1,7 @@
-@props(['disabled' => false, 'name', 'id', 'label', 'value' => '', 'checked' => false])
+@props(['disabled' => false, 'name', 'id', 'label', 'value' => '', 'checked' => false, 'smCol' => 'col-span-1'])
 
-<div class="relative flex items-start py-4">
-    <div class="min-w-0 flex-1 text-sm">
-        <x-form.label for="{{ $name }}-{{ $value }}" class="select-none">{{ $label }}</x-form.label>
-    </div>
-    <div class="ml-3 flex h-5 items-center">
+<div class="relative flex items-start justify-between py-4 px-3 {{ $smCol }}">
+    <div class="flex h-5 items-center">
         <input
             id="{{ $name }}-{{ $value }}"
             name="{{ $name }}"
@@ -18,5 +15,9 @@
             type="checkbox"
             @checked($checked)
         >
+    </div>
+
+    <div class="min-w-0 text-sm">
+        <x-form.label for="{{ $name }}-{{ $value }}" class="select-none flex flex-1 w-full">{{ $label }}</x-form.label>
     </div>
 </div>

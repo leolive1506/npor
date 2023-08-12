@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FragmentValue\FragmentValueController;
+use App\Http\Controllers\GroupParticipant\FragmentValueController as GroupParticipantFragmentValueController;
 use App\Http\Controllers\Guest\EnterStudentClass;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -40,9 +41,16 @@ Route::middleware('auth')->group(function () {
     Route::middleware('in-squad')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::prefix('dividir-valor')->controller(FragmentValueController::class)->group(function () {
-            Route::get('/', 'index')->name('fragment-value.index');
-            Route::get('/criar', 'create')->name('fragment-value.create');
-            Route::post('/criar', 'store')->name('fragment-value.store');
+            Route::controller(FragmentValueController::class)->group(function () {
+                Route::get('/', 'index')->name('fragment-value.index');
+                Route::get('/criar', 'create')->name('fragment-value.create');
+                Route::post('/criar', 'store')->name('fragment-value.store');
+            });
+
+            Route::get('/criar/participantes', [GroupParticipantFragmentValueController::class, 'create'])
+                ->name('group-participant.fragment-value.create');
+            Route::post('/criar/participantes', [GroupParticipantFragmentValueController::class, 'store'])
+                ->name('group-participant.fragment-value.store');;
         });
 
     });
