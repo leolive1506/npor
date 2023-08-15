@@ -38,7 +38,7 @@ class FragmentValueController extends Controller
     public function store(CreateFragmentValueRequest $request)
     {
         $fragmentValue = FragmentValue::create($request->validated());
-        return redirect()->route('group-participant.fragment-value.create')->with('success', 'Salvo com sucesso');
+        return redirect()->route('group-participant.fragment-value.create', $fragmentValue->id)->with('success', 'Salvo com sucesso');
     }
 
     /**

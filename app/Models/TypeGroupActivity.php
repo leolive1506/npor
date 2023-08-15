@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupActivity extends Model
+class TypeGroupActivity extends Model
 {
     use HasFactory;
 
-    protected $table = 'group_activities';
+    protected $table = 'type_group_activities';
     protected $fillable = ['name', 'description'];
 }

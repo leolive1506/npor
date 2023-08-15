@@ -47,9 +47,9 @@ Route::middleware('auth')->group(function () {
                 Route::post('/criar', 'store')->name('fragment-value.store');
             });
 
-            Route::get('/criar/participantes', [GroupParticipantFragmentValueController::class, 'create'])
+            Route::get('/criar/{fragment_value_id}/participantes', [GroupParticipantFragmentValueController::class, 'create'])
                 ->name('group-participant.fragment-value.create');
-            Route::post('/criar/participantes', [GroupParticipantFragmentValueController::class, 'store'])
+            Route::post('/criar/{fragment_value_id}/participantes', [GroupParticipantFragmentValueController::class, 'store'])
                 ->name('group-participant.fragment-value.store');;
         });
 

@@ -12,13 +12,14 @@ class GroupParticipant extends Model
     protected $table = 'group_participants';
     protected $fillable = [
         'group_activity_id',
-        'user_id',
+        'type_group_activity_id',
+        'user_student_class_id',
         'deleted_by',
     ];
 
-    public function groupActivity()
+    public function typeGroupActivity()
     {
-        return $this->belongsTo(GroupActivity::class, 'group_activity_id');
+        return $this->belongsTo(TypeGroupActivity::class, 'type_group_activity_id');
     }
 
     public function user()

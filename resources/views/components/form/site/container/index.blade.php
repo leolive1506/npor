@@ -11,7 +11,7 @@
 @endphp
 
 <div {{  $attributes->merge(['class' => 'mt-10 sm:mt-0 max-w-7xl mx-auto']) }}>
-    <div class="grid md:grid-cols-3 md:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-6">
         @if ($title)
             <div>
                 <div class="px-4 sm:px-0 h-full">

@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('group_participants', function (Blueprint $table) {
-            $table->unsignedBigInteger('deleted_by')->nullable()->change();
+        Schema::table('fragment_values', function (Blueprint $table) {
+            $table->boolean('is_all_users_student_class')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('group_participants', function (Blueprint $table) {
-            $table->unsignedBigInteger('deleted_by')->change();
+        Schema::table('fragment_values', function (Blueprint $table) {
+            $table->dropColumn('is_all_users_student_class');
         });
     }
 };

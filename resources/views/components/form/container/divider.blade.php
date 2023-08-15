@@ -12,7 +12,7 @@
 @endphp
 
 <div {{ $attributes->merge(['class' => 'mt-10 max-w-7xl mx-auto sm:px-6']) }}>
-    <div class="grid md:grid-cols-3 md:gap-6 {{ $classGridContainer }}">
+    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-6 {{ $classGridContainer }}">
         <div class="md:col-span-1">
             <div class="px-4 sm:px-0 h-full">
                 <h3 class="text-lg font-medium leading-6 text-white {{ $classTitle }}">{{ $title }}</h3>

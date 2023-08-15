@@ -9,7 +9,7 @@ class FragmentValue extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'value_total', 'created_by', 'closed_by'];
+    protected $fillable = ['name', 'is_all_users_student_class', 'description', 'value_total', 'created_by', 'closed_by'];
 
     public function createdBy()
     {
